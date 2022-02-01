@@ -184,11 +184,6 @@ class SelectTableComponent extends React.Component {
                   <b>Selected Row Items(Click Button To Get):</b>
                   <code>{JSON.stringify(this.state.SelectedList)}</code>
                 </div>
-                <Route to="./" component={Dashboard}>
-                  <button className=" btn btn-info commonButton">
-                    Dashboard &nbsp;
-                  </button>
-                </Route>
               </div>
             </div>
           </div>
