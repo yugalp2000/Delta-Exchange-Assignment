@@ -1,9 +1,8 @@
-import React from "react";
-import { Route } from "react-router";
+import React, { Fragment } from "react";
 import swal from "sweetalert";
-import Dashboard from "./Dashboard";
 import Sidebar from "./Sidebar";
 import "./UserDetails.css";
+import AddMembers from "./AddTeamMember";
 
 const Users = [
   {
@@ -33,12 +32,15 @@ const Users = [
 ];
 
 class SelectTableComponent extends React.Component {
+  
+ 
   constructor(props) {
     super(props);
     this.state = {
       List: Users,
       MasterChecked: false,
       SelectedList: [],
+      showModalPopup: false
     };
   }
 
@@ -54,6 +56,11 @@ class SelectTableComponent extends React.Component {
       List: tempList,
       SelectedList: this.state.List.filter((e) => e.selected),
     });
+
+    //Popup Modal
+     AddMembers.isShowPopup = (status) => {
+       this.setState({ showModalPopup: status });
+     }; 
   }
 
   delItem(id) {
@@ -113,8 +120,27 @@ class SelectTableComponent extends React.Component {
               <Sidebar />
             </div>
             <div className="col-md-9 quotes">
-              <h1>Team Member</h1>
+              <Fragment>
+                <h3 align="center">Team Member</h3>
+                <header align="center">
+                  <Fragment>
+                    <div
+                      className="nav-item"
+                      onClick={() => this.isShowPopup(true)}
+                    >
+                      <button>Add Team Member</button>
+                    </div>
+                  </Fragment>
+                </header>
+                <AddMembers
+                  showModalPopup={this.state.showModalPopup}
+                  onPopupClose={this.isShowPopup}
+                ></AddMembers>
+              </Fragment>
+              <br />
               <div className="table table-hover table-dark">
+                <br />
+                <br />
                 <table className="table-style">
                   <thead>
                     <tr>
@@ -176,12 +202,14 @@ class SelectTableComponent extends React.Component {
                 >
                   Get Selected Items {this.state.SelectedList.length}
                 </button>
+                <br />
                 {/*<div className="row">
               <b>All Row Items:</b>
               <code>{JSON.stringify(this.state.List)}</code>
             </div>*/}
                 <div className="container-fluid">
                   <b>Selected Row Items(Click Button To Get):</b>
+                  <br />
                   <code>{JSON.stringify(this.state.SelectedList)}</code>
                 </div>
               </div>
