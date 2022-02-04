@@ -39,7 +39,7 @@ class SelectTableComponent extends React.Component {
     this.state = {
       List: Users,
       MasterChecked: false,
-      SelectedList: [],
+      SelectedList: [], 
       showModalPopup: false
     };
   }

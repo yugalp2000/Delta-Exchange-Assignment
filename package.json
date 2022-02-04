@@ -4,9 +4,11 @@
   "private": true,
   "dependencies": {
     "react": "^16.12.0",
+    "react-bootstrap": "^2.1.2",
+    "react-datetime": "^3.1.1",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.2.0",
+    "react-scripts": "^5.0.0",
     "sweetalert": "^2.1.2"
   },
   "scripts": {
